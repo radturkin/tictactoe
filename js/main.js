@@ -52,17 +52,45 @@ document.getElementById("c3").onclick = onClick
 
 function winner(){
     console.log(a1.innerHTML, a2.innerHTML, a3.innerHTML)
+    //array of array if x+1, if o-1 if =3 x wins if =-3 o wins
+    let winArray=[[a1.innerHTML,a2.innerHTML,a3.innerHTML],[b1.innerHTML,b2.innerHTML,b3.innerHTML], [c1.innerHTML,c2.innerHTML,c3.innerHTML],
+    [a1.innerHTML,b1.innerHTML,c1.innerHTML],[a2.innerHTML,b2.innerHTML,c2.innerHTML], [a3.innerHTML,b3.innerHTML,c3.innerHTML], 
+    [a1.innerHTML,b2.innerHTML,c3.innerHTML],[a3.innerHTML,b2.innerHTML,c1.innerHTML]]
+    for(let i=0;i<8;i++){
+        let count = 0
 
-    if ((a1.innerHTML == a2.innerHTML == a3.innerHTML)&&(a1.innerHTML!="")){
-        console.log("winner")
-        document.getElementById("win").innerHTML = "winner"
+        for(let j=0;j<3;j++){
+
+            if(winArray[i][j]=="X"){
+                count+=1
+            }else if (winArray[i][j]=="O"){
+                count-=1
+            }else{
+                count=count
+            }
+            if(count==3){
+                console.log("x wins")
+                document.getElementById("win").innerHTML = "x wins"
+                break;
+            }
+            else if(count==-3){
+                console.log("o wins")
+                document.getElementById("win").innerHTML = "o wins"
+                break
+            }
+            else {
+                console.log("checking for winners")
+            }
         }
+    }
+
 }
 //reset button resets game
 function resetGame(){
     localStorage.clear()
     for(let i=0;i<9;i++){
         document.getElementById(squareArray[i]).innerText = ""
+        document.getElementById("win").innerHTML = ""
     }return countClick
 }
 document.querySelector("button").onclick = resetGame
