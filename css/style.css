@@ -1,0 +1,36 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+img{
+  display: block;
+  margin: 0 auto;
+  width: 25%;
+}
+section {
+height: 100px;
+}
+article {
+  border: black solid 2px;
+  width: 33%;
+  height:100px;
+  float: left;
+  font-size: 80px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
