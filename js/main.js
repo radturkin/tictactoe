@@ -71,9 +71,9 @@ function winner(){
 //reset button resets game
 function resetGame(){
     localStorage.clear()
-    for(let i=0;i<9;i++){
-        document.getElementById(squareArray[i]).innerText = ""
-        document.getElementById("win").innerHTML = ""
+    for(square of squareArray){
+        document.getElementById(square).innerText = ""
+    document.getElementById("win").innerHTML = ""
     }
 }
 document.querySelector("button").onclick = resetGame
