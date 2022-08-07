@@ -37,16 +37,15 @@ const onClick = function(countClick) {
   }
   
 // each square listens for click
-document.getElementById("a1").onclick = onClick
-document.getElementById("a2").onclick = onClick
-document.getElementById("a3").onclick = onClick
-document.getElementById("b1").onclick = onClick
-document.getElementById("b2").onclick = onClick
-document.getElementById("b3").onclick = onClick
-document.getElementById("c1").onclick = onClick
-document.getElementById("c2").onclick = onClick
-document.getElementById("c3").onclick = onClick
-
+a1.onclick = onClick
+a2.onclick = onClick
+a3.onclick = onClick
+b1.onclick = onClick
+b2.onclick = onClick
+b3.onclick = onClick
+c1.onclick = onClick
+c2.onclick = onClick
+c3.onclick = onClick
 
 //check for winner
 
@@ -56,32 +55,16 @@ function winner(){
     let winArray=[[a1.innerHTML,a2.innerHTML,a3.innerHTML],[b1.innerHTML,b2.innerHTML,b3.innerHTML], [c1.innerHTML,c2.innerHTML,c3.innerHTML],
     [a1.innerHTML,b1.innerHTML,c1.innerHTML],[a2.innerHTML,b2.innerHTML,c2.innerHTML], [a3.innerHTML,b3.innerHTML,c3.innerHTML], 
     [a1.innerHTML,b2.innerHTML,c3.innerHTML],[a3.innerHTML,b2.innerHTML,c1.innerHTML]]
-    for(let i=0;i<8;i++){
-        let count = 0
+    for (array of winArray){
+        if((array[0]==array[1]&&array[2]==array[0])&&(array[0]!="")){
+            console.log(`congrats the winner is ${array[0]}`)
+            document.getElementById("win").innerHTML = `congrats the winner is ${array[0]}`
+            break
+        }else {
+            document.getElementById("win").innerHTML = "No Winner has been detected"
 
-        for(let j=0;j<3;j++){
+    }
 
-            if(winArray[i][j]=="X"){
-                count+=1
-            }else if (winArray[i][j]=="O"){
-                count-=1
-            }else{
-                count=count
-            }
-            if(count==3){
-                console.log("x wins")
-                document.getElementById("win").innerHTML = "x wins"
-                break;
-            }
-            else if(count==-3){
-                console.log("o wins")
-                document.getElementById("win").innerHTML = "o wins"
-                break
-            }
-            else {
-                console.log("checking for winners")
-            }
-        }
     }
 
 }
@@ -91,6 +74,6 @@ function resetGame(){
     for(let i=0;i<9;i++){
         document.getElementById(squareArray[i]).innerText = ""
         document.getElementById("win").innerHTML = ""
-    }return countClick
+    }
 }
 document.querySelector("button").onclick = resetGame
