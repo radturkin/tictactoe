@@ -40,51 +40,54 @@ class Game {
     return this._name;
   }
   //the function that places the xs and os
-  onClick = function (countClick) {
+  onClick = function () {
     let place = this.id;
-
-    self.countClick = Number(localStorage.getItem("counter"));
-
-    if (self.countClick % 2 == 0) {
-      self.playerValue = "X";
+    if (document.getElementById(place).classList.contains("clicked")) {
     } else {
-      self.playerValue = "O";
-    }
+      document.getElementById(place).classList.add("clicked");
+      self.countClick = Number(localStorage.getItem("counter"));
 
-    document.getElementById(place).innerHTML = self.playerValue;
-    console.log(this.id, this.innerHTML);
-    self.countClick += 1;
-    localStorage.setItem("counter", self.countClick);
-
-    const winner = function () {
-      console.log(a1.innerHTML, a2.innerHTML, a3.innerHTML);
-      //array of array if x+1, if o-1 if =3 x wins if =-3 o wins
-      let winArray = [
-        [a1.innerHTML, a2.innerHTML, a3.innerHTML],
-        [b1.innerHTML, b2.innerHTML, b3.innerHTML],
-        [c1.innerHTML, c2.innerHTML, c3.innerHTML],
-        [a1.innerHTML, b1.innerHTML, c1.innerHTML],
-        [a2.innerHTML, b2.innerHTML, c2.innerHTML],
-        [a3.innerHTML, b3.innerHTML, c3.innerHTML],
-        [a1.innerHTML, b2.innerHTML, c3.innerHTML],
-        [a3.innerHTML, b2.innerHTML, c1.innerHTML],
-      ];
-      for (let array of winArray) {
-        if (array[0] == array[1] && array[2] == array[0] && array[0] != "") {
-          console.log(`congrats the winner is ${array[0]}`);
-          document.getElementById(
-            "win"
-          ).innerHTML = `congrats the winner is ${array[0]}`;
-          break;
-        } else {
-          document.getElementById("win").innerHTML =
-            "No Winner has been detected";
-        }
+      if (self.countClick % 2 == 0) {
+        self.playerValue = "X";
+      } else {
+        self.playerValue = "O";
       }
-    };
-    winner();
 
-    return self.countClick;
+      document.getElementById(place).innerHTML = self.playerValue;
+      console.log(this.id, this.innerHTML);
+      self.countClick += 1;
+      localStorage.setItem("counter", self.countClick);
+
+      const winner = function () {
+        console.log(a1.innerHTML, a2.innerHTML, a3.innerHTML);
+        //array of array if x+1, if o-1 if =3 x wins if =-3 o wins
+        let winArray = [
+          [a1.innerHTML, a2.innerHTML, a3.innerHTML],
+          [b1.innerHTML, b2.innerHTML, b3.innerHTML],
+          [c1.innerHTML, c2.innerHTML, c3.innerHTML],
+          [a1.innerHTML, b1.innerHTML, c1.innerHTML],
+          [a2.innerHTML, b2.innerHTML, c2.innerHTML],
+          [a3.innerHTML, b3.innerHTML, c3.innerHTML],
+          [a1.innerHTML, b2.innerHTML, c3.innerHTML],
+          [a3.innerHTML, b2.innerHTML, c1.innerHTML],
+        ];
+        for (let array of winArray) {
+          if (array[0] == array[1] && array[2] == array[0] && array[0] != "") {
+            console.log(`congrats the winner is ${array[0]}`);
+            document.getElementById(
+              "win"
+            ).innerHTML = `congrats the winner is ${array[0]}`;
+            break;
+          } else {
+            document.getElementById("win").innerHTML =
+              "No Winner has been detected";
+          }
+        }
+      };
+      winner();
+
+      return self.countClick;
+    }
   };
   //check for winner
 
